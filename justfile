@@ -353,7 +353,7 @@ init-cargo-workspaces:
 init-audit:
     @cargo audit --version || cargo install cargo-audit
 
-# Install croos compilation tool
+# Install cross compilation tool. c7dee4d is known to work, current release (0.2.5) causes linking problems
 init-cross:
     cross --version || cargo install cross --rev c7dee4d --git https://github.com/cross-rs/cross
 
@@ -363,7 +363,7 @@ init-llvm-cov:
     @rustup component add llvm-tools-preview
 
 # Initialize all tools needed for running tests, etc.
-init: init-cargo-workspaces init-audit init-cross
+init: init-cargo-workspaces init-audit
     @echo 'all tools initialized'
 
 # Run the server with example config, for manual testing purposes
